@@ -57,7 +57,7 @@ class ServiceBancaireTestAvecMock {
 	void testmethodecrediter() {
 
 		assertEquals((long)10000, cepdao.debitercpte(cpteep.getSolde(), 30000));
-		assertEquals((long)70200,  cepdao.creditercpte(cpteep.getSolde(), 30000), "Bon resultat");
+		assertEquals((long)70200,  cepdao.creditercpte(cpteep.getSolde(), 30000), "Operation réalisée");
 	}
 
 }
