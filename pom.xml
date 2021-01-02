@@ -69,13 +69,24 @@
     <artifactId>maven-surefire-report-plugin</artifactId>
     <version>3.0.0-M4</version>
 </dependency>
- <dependency>
-			<groupId>org.apache.maven.plugins</groupId>
-			<artifactId>maven-site-plugin</artifactId>
-			<version>3.9.1</version>
-			<type>maven-plugin</type>
-		</dependency>
+
 		
 	</dependencies>
-	 
+	 <build>
+        <plugins>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>3.7.1</version>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>3.0.0</version>
+            </plugin>
+
+        </plugins>
+    </build>
 </project>
