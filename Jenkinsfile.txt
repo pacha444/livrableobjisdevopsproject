@@ -1,20 +1,61 @@
 pipeline {
-	agent any
-	stages {
-		stage('Build') {
-			steps {
-				echo 'Building..'
-			}
-		}
-		stage('Test') {
-			steps {
-				echo 'Testing..'
-			}
-		}
-		stage('Deploy') {
-			steps {
-				echo 'Deploying....'
-			}
-		}
-	}
-}
+    agent any
+
+    tools {
+        // Install the Maven version configured as "M3" and add it to the path.
+        maven "maven363"
+    }
+
+    stages {
+       
+        stage('Sources') {
+            steps {
+                // Get some code from a GitHub repository
+                git 'https://github.com/pacha444/livrableobjisdevopsproject.git'
+
+               
+
+              
+            }
+        }
+             stage('Build') {
+            steps {
+               
+               
+               
+
+                // To run Maven on a Windows agent, use
+                bat "mvn -Dmaven.test.failure.ignore=true clean package"
+          
+            
+            }
+         }
+           stage('Reporting') {
+            steps {
+               
+               
+               
+
+            
+                bat "mvn site"
+                bat "mvn surefire-report:report "
+            
+            }
+         }
+          stage('Test') {
+            steps {
+               
+               
+               
+              bat "mvn -DfailIfNoTests=false -Dtest=ServiceBancaireTestAvecMock,ServiceBancaireSansMock test"
+            
+       
+              
+            
+            }
+         }
+    }
+            
+        }
+    
+
